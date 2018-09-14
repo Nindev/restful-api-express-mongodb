@@ -1,0 +1,16 @@
+{
+  "name": "restful-api-express-mongodb",
+  "version": "1.0.0",
+  "description": "\"Building a RESTful API with Express and MongoDB\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.2.14"
+  }
+}
