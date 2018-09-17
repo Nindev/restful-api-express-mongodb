@@ -24,13 +24,13 @@ productRouter.route('/')
     res.status(201).send(product)
   })
 
+// Update product in the database
 productRouter.route('/:productId')
   .get((req, res) => {
     Product.findById(req.params.productId, (err, product) => {
       res.json(product)
     })
   })
-  // Update product in the database
   .put((req, res) => {
     Product.findById(req.params.productId, (err, product) => {
       product.name = req.body.name;
@@ -41,4 +41,24 @@ productRouter.route('/:productId')
       res.json(product)
     })
   })
-  module.exports = productRouter;
+
+  // Update product properties
+productRouter.route('/:productId')
+  .get((req, res) => {
+    Product.findById(req.params.productId, (err, product) => {
+      res.json(product)
+    })
+  })
+  .patch((req, res) => {
+    Product.findById(req.params.productId, (err, product) => {
+      if(req.body._id) {
+        delete req.body._id;
+      }
+      for(let p in req.body){
+        product[p] = req.body[p];
+      }
+      product.save();
+      res.json(product);
+    })
+  })
+module.exports = productRouter;
